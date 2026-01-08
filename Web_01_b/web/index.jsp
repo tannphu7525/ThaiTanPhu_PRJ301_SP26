@@ -10,8 +10,9 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <link href="css/style.css" rel="stylesheet">
     </head>
-    <body>
+    <body class="backgr">
         <h1>HTML Forms</h1>
         <form action="index.html">
             Textbox <input type="text" name="txtText" value="" size="5" /><br/>
