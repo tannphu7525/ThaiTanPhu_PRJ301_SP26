@@ -4,7 +4,6 @@
  */
 package controller;
 
-import com.sun.corba.se.spi.protocol.RequestDispatcherDefault;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -22,9 +21,9 @@ public class MainController extends HttpServlet {
             throws ServletException, IOException {
         String action = request.getParameter("action");
         String url = "login";
-        if (action.equals("login")) {
+        if ("login".equals(action)) {
             url = "LoginController";
-        }else if (action.equals("logout")) {
+        }else if ("logout".equals(action)) {
             url = "LogoutController";
         }
         

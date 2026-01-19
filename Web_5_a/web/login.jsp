@@ -12,10 +12,11 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <form action="MainController">
+        <form action="MainController" method="">
         <h1>Login</h1>
         Username: <input type="text" name="username" value="" /> <br/>
         Password: <input type="password" name="password" value="" /> <br/>
+        <input type="hidden" name="action" value="login"/>
         <input type="submit" value="SUBMIT" />                
         </form>
     </body>

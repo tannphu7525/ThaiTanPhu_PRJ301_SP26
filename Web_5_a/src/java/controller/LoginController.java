@@ -29,7 +29,8 @@ public class LoginController extends HttpServlet {
         String txtPassword = request.getParameter("password");
         String msg = "";
         
-        if (txtUserName == null || txtUserName.trim().isEmpty() || txtPassword == null || txtPassword.trim().isEmpty()) {
+        if (txtUserName == null || txtUserName.trim().isEmpty() ||
+                txtPassword == null || txtPassword.trim().isEmpty()) {
             msg = "Vui long nhap day du Username va Password";
             request.setAttribute("message", msg);
         } else {
