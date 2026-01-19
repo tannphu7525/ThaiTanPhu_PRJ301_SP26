@@ -24,26 +24,36 @@ public class LoginController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = "";
-        HttpSession session = request.getSession();
-        if (session.getAttribute("user") == null) {
-            String txtUserName = request.getParameter("username");
-            String txtPassword = request.getParameter("password");
-            
+        String url = "b.jsp";
+        String txtUserName = request.getParameter("username");
+        String txtPassword = request.getParameter("password");
+        String msg = "";
+        
+        if (txtUserName == null || txtUserName.trim().isEmpty() || txtPassword == null || txtPassword.trim().isEmpty()) {
+            msg = "Vui long nhap day du Username va Password";
+            request.setAttribute("message", msg);
+        } else {
             UserDAO dao = new UserDAO();
             UserDTO user = dao.login(txtUserName, txtPassword);
-            if (user != null) {
-                url = "loginsuccess.jsp";
-                session.setAttribute("user", user);
+            
+            if (user == null) {
+                msg = "Sai ten dang nhap hoac mat khau";
+                request.setAttribute("message", msg);
             } else {
-                url = "b.jsp";
-                request.setAttribute("message", "Invalid");
+                if ("0".equals(user.getStatus())) {
+                    msg = "Tai khoan cua ban da bi khoa";
+                    url = "b.jsp";
+                    request.setAttribute("ERROR_message", msg);
+                } else {
+                    HttpSession session = request.getSession();
+                    session.setAttribute("user", user);
+                    url = "loginsuccess.jsp";                  
+                }
             }
-        } else {
-            url = "loginsuccess.jsp";
         }
         
         request.getRequestDispatcher(url).forward(request, response);
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

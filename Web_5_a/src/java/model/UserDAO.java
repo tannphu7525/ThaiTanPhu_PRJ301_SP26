@@ -26,6 +26,7 @@ public class UserDAO {
             Connection con = DBUtils.getConnection();
             String sql = "SELECT * FROM tblUsers WHERE userID = ?";
             PreparedStatement statement = con.prepareStatement(sql);
+            statement.setString(1, username);
             ResultSet rs = statement.executeQuery();
             UserDTO user = null;
             while (rs.next()) {                
