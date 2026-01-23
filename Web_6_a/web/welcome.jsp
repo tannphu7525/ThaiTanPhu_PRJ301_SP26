@@ -19,11 +19,8 @@
         %>
         
         <<h2>Welcome, <%= u.getFullName() %> </h2>
-        <h2>Bang dieu khien</h2>
+        <h2>Bang dieu khien</h2> 
         <a href="search.jsp">Search</a>
-        Tinh nang 1 <br/>
-        Tinh nang 2 <br/>
-        Tinh nang 3 <br/>
         
         <br/>
         <a href="MainController?action=logout">LOGOUT</a>
